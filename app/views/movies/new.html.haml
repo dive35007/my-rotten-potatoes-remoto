@@ -1,0 +1,18 @@
+%h1 Create New Movie
+
+= form_tag movies_path :method => :post do
+  -# <form action="/movies" method="post">
+  
+  = label :movie, :title, 'Title'
+  -# <label for="movie_title">Title</label>
+  = text_field :movie, 'title'
+  = label :movie, :rating, 'Rating'
+  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+  = label :movie, :release_date, 'Released On'
+  = date_select :movie, :release_date, :start_year => 1901
+  = label :movie, :description, 'Description'
+  = text_area :movie, 'description', :rows => 10
+  %br
+  %br
+  = submit_tag 'Save Changes'
+  = submit_tag 'Cancel'
