@@ -3,17 +3,17 @@
 = form_tag movie_path(@movies), :method => :put do
 
   = label :movie, :title, 'Title'
-  = text_field :movie, 'title'
+  = text_field :movie, 'title', :value => @movies.title
 
   -# ...same as new.html.haml!  
   -# Soon we will see a way to DRY it out.
   -# ....
   = label :movie, :rating, 'Rating'
-  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+  = select :movie, :rating, ['G','PG','PG-13','R','NC-17'], :selected => @movies.rating
   = label :movie, :release_date, 'Released On'
-  = date_select :movie, :release_date, :start_year => 1901
+  = date_select :movie, :release_date, :start_year => 1901, :default => @movies.release_date
   = label :movie, :description, 'Description'
-  = text_area :movie, 'description', :rows => 10
+  = text_area :movie, 'description', :rows => 10, :value => @movies.description
   %br
   %br
   = submit_tag 'Update Movie Info'
